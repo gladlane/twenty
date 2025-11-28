@@ -28,6 +28,7 @@ import { BaseThemeProvider } from '@/ui/theme/components/BaseThemeProvider';
 import { UserThemeProviderEffect } from '@/ui/theme/components/UserThemeProviderEffect';
 import { PageFavicon } from '@/ui/utilities/page-favicon/components/PageFavicon';
 import { PageTitle } from '@/ui/utilities/page-title/components/PageTitle';
+import { GladlaneWidgetEffect } from '@/gladlane/components/GladlaneWidgetEffect';
 import { LazyMetadataLoadEffect } from '@/users/components/LazyMetadataLoadEffect';
 import { WorkspaceProviderEffect } from '@/workspace/components/WorkspaceProviderEffect';
 import { StrictMode } from 'react';
@@ -46,6 +47,7 @@ export const AppRouterProviders = () => {
         <LazyMetadataLoadEffect />
         <IsAppMetadataReadyEffect />
         <WorkspaceProviderEffect />
+        <GladlaneWidgetEffect />
         <ClientConfigProvider>
           <CaptchaProvider>
             <ChromeExtensionSidecarEffect />
