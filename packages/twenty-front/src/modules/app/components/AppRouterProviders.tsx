@@ -21,6 +21,7 @@ import { BaseThemeProvider } from '@/ui/theme/components/BaseThemeProvider';
 import { UserThemeProviderEffect } from '@/ui/theme/components/UserThemeProviderEffect';
 import { PageFavicon } from '@/ui/utilities/page-favicon/components/PageFavicon';
 import { PageTitle } from '@/ui/utilities/page-title/components/PageTitle';
+import { GladlaneWidgetEffect } from '@/gladlane/components/GladlaneWidgetEffect';
 import { UserAndViewsProviderEffect } from '@/users/components/UserAndViewsProviderEffect';
 import { UserProvider } from '@/users/components/UserProvider';
 import { WorkspaceProviderEffect } from '@/workspace/components/WorkspaceProviderEffect';
@@ -38,6 +39,7 @@ export const AppRouterProviders = () => {
         <ClientConfigProviderEffect />
         <UserAndViewsProviderEffect />
         <WorkspaceProviderEffect />
+        <GladlaneWidgetEffect />
         <ClientConfigProvider>
           <CaptchaProvider>
             <ChromeExtensionSidecarEffect />
