@@ -1,8 +1,9 @@
-name: Build and Deploy
+name: CD - Deploy to Render
 
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
@@ -26,9 +27,16 @@ jobs:
           file: packages/twenty-docker/twenty/Dockerfile
           platforms: linux/amd64
           push: true
-          tags: chukagladlane/twenty:latest
+          tags: |
+            tobenna223/tenty:latest
+            tobenna223/tenty:${{ github.sha }}
+          build-args: |
+            REACT_APP_SERVER_BASE_URL=${{ vars.RENDER_SERVER_URL }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Deploy to Render
-        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
+      - name: Deploy Server to Render
+        run: curl -sf "${{ secrets.RENDER_DEPLOY_HOOK_SERVER }}"
+
+      - name: Deploy Worker to Render
+        run: curl -sf "${{ secrets.RENDER_DEPLOY_HOOK_WORKER }}"
